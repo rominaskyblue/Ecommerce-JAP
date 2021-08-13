@@ -19,6 +19,8 @@
     }
 
     body {
+
+      
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
@@ -41,15 +43,15 @@
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading"> Sign in</h4>
-      <!-- <form name="loginForm" onsubmit="return validation()" method="POST"> -->
-        <input class=signin type="email" id="email" name="email" placeholder="Email adress">
+      <form name="loginForm" method="POST" action="landing.html">
+        <input class=signin type="email" id="email" name="email" placeholder="Email adress" required>
         <br> 
-        <input class=signin type="password" id="password" name="password" placeholder="Password"><br><br>
+        <input class=signin type="password" id="password" name="password" placeholder="Password" required><br><br>
         <br>
         <label for="remember"></label><input type="checkbox" name="remember" id="remember"> Remember me</label>
         <br>
         <button type="submit" class="signin" id="signIn">Sign in</button>
-      <!-- </form> -->
+      </form>
     </div>
   </div>
 

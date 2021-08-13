@@ -11,20 +11,20 @@ var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-var validation = function(){
-  console.log("entre")
-  let form = document.forms["loginForm"];
-  let email = form["email"].value;
-  let password = form["password"].value;
-  if(email === ""){
-      alert("Email must be filled out");
-      return false;
-  }
-  if(password === ""){
-      alert("Password must be filled out");
-      return false;
-  }
-}
+// var validation = function(){
+//   console.log("entre")
+//   let form = document.forms["loginForm"];
+//   let email = form["email"].value;
+//   let password = form["password"].value;
+//   if(email === ""){
+//       alert("Email must be filled out");
+//       return false;
+//   }
+//   if(password === ""){
+//       alert("Password must be filled out");
+//       return false;
+//   }
+// }
   
 
 var hideSpinner = function(){
