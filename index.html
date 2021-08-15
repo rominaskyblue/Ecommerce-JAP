@@ -19,38 +19,41 @@
     }
 
     body {
-
-      
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
       background-color: #f5f5f5;
+      background-image: url('img/loginBg.jpg');
+      position: relative;
     }
 
-    .signin {
-      width: 100%;
-      max-width: 330px;
+    .login-page {
+      width: 420px;
       padding: 15px;
-      margin: auto;
+      padding-left: 40px;
+      padding-right: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, .4);
+      background-color: #f5f5f5;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading"> Sign in</h4>
-      <form name="loginForm" method="POST" action="landing.html">
-        <input class=signin type="email" id="email" name="email" placeholder="Email adress" required>
+  <div class="container">
+    <div class="login-page">
+      <h4> Sign in</h4>
+      <form class="form-signin" name="loginForm" method="POST" action="landing.html">
+        <input class="form-control" type="email" id="email" name="email" placeholder="Email adress" required>
         <br> 
-        <input class=signin type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
         <br>
-        <label for="remember"></label><input type="checkbox" name="remember" id="remember"> Remember me</label>
+        <input type="checkbox" name="remember" id="remember"> Remember me</label>
         <br>
-        <button type="submit" class="signin" id="signIn">Sign in</button>
+        <button type="submit" class="btn btn-block btn-lg btn-primary" id="signIn">Sign in</button>
       </form>
     </div>
   </div>
