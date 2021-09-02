@@ -7,26 +7,11 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
+
+
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
-
-// var validation = function(){
-//   console.log("entre")
-//   let form = document.forms["loginForm"];
-//   let email = form["email"].value;
-//   let password = form["password"].value;
-//   if(email === ""){
-//       alert("Email must be filled out");
-//       return false;
-//   }
-//   if(password === ""){
-//       alert("Password must be filled out");
-//       return false;
-//   }
-// }
-  
-
 var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
@@ -55,9 +40,18 @@ var getJSONData = function(url){
         return result;
     });
 }
+document.addEventListener("DOMContentLoaded", function (e) {
 
+  let miPerfil = document.getElementById("user");
+  let email = window.sessionStorage.getItem("session");
+
+  if( email !== null) {
+    miPerfil.innerHTML = email;
+  } else {
+    miPerfil.href = "index.html";
+    miPerfil.innerHTML = `<i class="far fa-user icon-login"></i> `
+  }
+})
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-});
+//elementos HTML prese  ntes.

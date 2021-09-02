@@ -1,20 +1,22 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-    
-  });
-// document.getElementById("signIn").onclick = function(e){
-//     console.log("entre")
-//     let email = document.getElementById("email").value;
-//     let password = document.getElementById("password").value;
-//     if(email === ""){
-//         alert("Email must be filled out");
-//         return false;
-//     }
-//     if(password === ""){
-//         alert("Password must be filled out");
-//         return false;
-//     }
-//     location.href = "landing.html";
-//   };
+
+var redirect = function () {
+  window.location.href = "landing.html";
+  return false;
+}
+
+document.addEventListener("DOMContentLoaded", function (e) {
+
+  if(window.sessionStorage.getItem("session") !== null) {
+    redirect();
+  }
+
+  document.getElementById('my-form').addEventListener("submit", function (e) {
+    e.preventDefault(); // esto cancela el evento en cuestion (si es cancelable) 
+    let email = document.getElementById("email").value;
+    window.sessionStorage.setItem("session", email );
+    return redirect();
+  }, false);
+});
