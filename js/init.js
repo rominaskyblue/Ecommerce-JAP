@@ -16,6 +16,11 @@ var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+var logOut = function(){
+  window.sessionStorage.removeItem("session");
+  window.location.href = "index.html";
+}
+
 var getJSONData = function(url){
     var result = {};
     showSpinner();
@@ -43,13 +48,25 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function (e) {
 
   let miPerfil = document.getElementById("user");
-  let email = window.sessionStorage.getItem("session");
+  let userJSON = window.sessionStorage.getItem("session");
 
-  if( email !== null) {
-    miPerfil.innerHTML = email;
+  if( userJSON !== null) {
+    let user = JSON.parse(userJSON);
+    // miPerfil.innerHTML = user.email + " " + user.lastAccess;
+    miPerfil.innerHTML = `<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">`
+    + user.email.split("@")[0] + " Último acceso: " + user.lastAccess +
+      `</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+      <a class="dropdown-item" onclick="logOut()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div> `
+
+    console.log(user.lastAccess);
   } else {
     miPerfil.href = "index.html";
-    miPerfil.innerHTML = `<i class="far fa-user icon-login"></i> `
+    miPerfil.innerHTML = `<i class="fas fa-sign-in-alt icon-login"></i> `
   }
 })
 //Función que se ejecuta una vez que se haya lanzado el evento de
