@@ -52,10 +52,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   if( userJSON !== null) {
     let user = JSON.parse(userJSON);
+    let username = user.email.split("@")[0];
+    window.sessionStorage.setItem("username",username);
     // miPerfil.innerHTML = user.email + " " + user.lastAccess;
     miPerfil.innerHTML = `<div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">`
-    + user.email.split("@")[0] + " Último acceso: " + user.lastAccess +
+    + username + " Último acceso: " + user.lastAccess +
       `</button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>

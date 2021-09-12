@@ -13,6 +13,11 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    .checked {
+      color: orange;
+    }
+    </style>
 </head>
 
 <body>
@@ -26,14 +31,62 @@
       <a id=user class="py-2 d-none d-md-inline-block">Mi perfil</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container" style="padding-top: 20px;">
+    <h3 id="productName" style="text-align: center;"></h3>
+    <hr class="my-3">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" id="productImages">
+          
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <p id="soldCount" class="small muted"></p>
+            <p id="productCost" style="font-size: x-large; font-weight: bold;"></p>
+        <dl>
+          <dt>Descripción</dt>
+          <dd>
+            <p id="productDescription"></p>
+          </dd>
+        </dl>
+      </div>
     </div>
-  </div>
+    <br>
+      <h4>Comentarios</h4>
+      <div class="list-group" id="comment-list-container">
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col">
+          <textarea name="newComment" id="newComment" cols="60" rows="1" placeholder="Escribe tu comentario..." maxlength="2000"></textarea>
+          
+          <span class="fa fa-star" style="font-size: x-large;" id="star1"></span>
+          <span class="fa fa-star" style="font-size: x-large;" id="star2"></span>
+          <span class="fa fa-star" style="font-size: x-large;" id="star3"></span>
+          <span class="fa fa-star" style="font-size: x-large;" id="star4"></span>
+          <span class="fa fa-star" style="font-size: x-large;" id="star5"></span>
+        </div>
+        <div class="col">
+          <button type="summit" class="btn btn-primary" id="buttonAddComment"> Comentar </button>
+        </div>
+      </div>
+    </div>
+<br>
+
+  <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+</div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

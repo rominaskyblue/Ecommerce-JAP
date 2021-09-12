@@ -32,13 +32,14 @@ function showProductList(array) {
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
         let product = array[i];
+        console.log(product);
         console.log('iteracion ' + i, 'min ' + minCount + '---- max ' + maxCount);
         console.log(product);
         if (((minCount === undefined) || (minCount !== undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount === undefined) || (maxCount !== undefined && parseInt(product.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <a class="list-group-item list-group-item-action" href="product-info.html">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
@@ -54,7 +55,7 @@ function showProductList(array) {
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
         `
         }
 
