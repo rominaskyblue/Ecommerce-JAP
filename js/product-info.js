@@ -3,12 +3,23 @@
 //elementos HTML presentes.
 let product = {};
 let comments = [];
+let relatedProducts = [];
 let score = 0;
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_URL).then(function (res) {
         if (res.status === "ok") {
             product = res.data;
+            getJSONData(PRODUCTS_URL).then(function(res){
+                if(res.status === "ok"){
+                    for (let index = 0; index < product.relatedProducts.length; index++) {
+                        let relatedProductIndex = product.relatedProducts[index];
+                        relatedProducts.push(res.data[relatedProductIndex]);
+                    }
+                }
+                viewRelated(relatedProducts);
+            });
+            console.log(relatedProducts);
             console.log(product);
             document.getElementById("productName").innerHTML = product.name;
             document.getElementById("productDescription").innerHTML = product.description;
@@ -20,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }
     });
+
+    
 
     function showImages(array) {
 
@@ -94,6 +107,32 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("buttonAddComment").addEventListener("click", function (e) {
         addComment();
     });
+
+    function viewRelated(array) {
+        let htmlContentToAppend = "";
+        console.log('entre a la funcion');
+
+        for (let i = 0; i < array.length; i++) {
+            let relatedProduct = array[i];
+            console.log(i);
+                htmlContentToAppend += `
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="img-fluid" alt="100%x280" src="`+ relatedProduct.imgSrc + `">
+                        <div class="card-body">
+                            <h4 class="card-title">`+ relatedProduct.name + `</h4>
+                            <p class="card-text">`+ relatedProduct.cost  + ` ` + relatedProduct.currency +`</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            `
+            document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+        }
+    }
+
+    
 
 
     let star1 = document.getElementById("star1");
