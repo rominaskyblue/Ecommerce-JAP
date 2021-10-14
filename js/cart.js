@@ -8,35 +8,36 @@ let subtotal = 0;
 let total = 0;
 let deliveryPercentage = 0.15;
 let deliveryCost = 0;
+const dolarvalue = 40;
 
-let myFunction = function (unitCost,index) {
+let myFunction = function (unitCost, index) {
     cantProduct
- = document.getElementById("cantProduct"+index).value;
+        = document.getElementById("cantProduct" + index).value;
     let subtotalItem = unitCost * cantProduct
-;
-    addSubtotal(index,subtotalItem);
-    document.getElementById('subtotalItem'+index).innerHTML = "UYU " + subtotalItem;
+        ;
+    addSubtotal(index, subtotalItem);
+    document.getElementById('subtotalItem' + index).innerHTML = "UYU " + subtotalItem;
     document.getElementById('subtotalCost').innerHTML = 'UYU ' + subtotal;
     updateTotal();
 };
 
-let addSubtotal = function(position,monto) {
+let addSubtotal = function (position, monto) {
     subtotalElement[position] = monto;
     subtotal = 0;
-    for(let index = 0; index < subtotalElement.length; index++) {
-        console.log(index,subtotal);
+    for (let index = 0; index < subtotalElement.length; index++) {
+        console.log(index, subtotal);
         subtotal += subtotalElement[index];
     }
     console.log('nuevo subtotal', subtotal);
 };
 
-let updateTotal = function() {
+let updateTotal = function () {
     deliveryCost = deliveryPercentage * subtotal;
     total = subtotal + deliveryCost;
     document.getElementById('deliveryCost').innerHTML = 'UYU ' + deliveryCost.toFixed(2);
     document.getElementById('total').innerHTML = 'UYU ' + total;
 }
-   
+
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -47,8 +48,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             console.table(res.data);
             for (let index = 0; index < articles.length; index++) {
                 const { src, name, currency, unitCost } = articles[index];
+                let valueArt = unitCost;
+                if (currency === "USD") {
+                    valueArt = unitCost * dolarvalue;
+                    console.log ("aca entro", valueArt, dolarvalue);
+                }
                 htmlContentToAppend += `<div class="list-group-item list-group-item-action" href="product-info.html">
-          <div class="row">
+                <div class="row">
               <div class="col-4">
                   <img style= "width: 100px" src="`+ src + `">
               </div>
@@ -58,19 +64,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
                   </div>
                   <br>
                   <div class="d-flex w-100 justify-content-between">
-                    <h10 class="text-muted" >`+ currency + ` ` + unitCost + `</h10>
-                    <input type="number"  min="1" style="width: 60px;" value="2" id=cantProduct`+index+` onchange="myFunction(`+unitCost+`,`+index+`)">
-                    <h10 class="text-muted" id="subtotalItem`+index+`">`+ currency + (cantProduct
-                     * unitCost) +`</h10>
+                    <h10 class="text-muted" > UYU ` + valueArt + `</h10>
+                    <input type="number"  min="1" style="width: 60px;" value="2" id=cantProduct`+ index + ` onchange="myFunction(` + valueArt + `,` + index + `)">
+                    <h10 class="text-muted" id="subtotalItem`+ index + `"> UYU ` + (cantProduct
+                        * valueArt) + `</h10>
 
                   </div>
-              </div>
+              </div>    
           </div>
           </div>
              `;
-            addSubtotal(index,(cantProduct
-             * unitCost));
-
+                addSubtotal(index, (cantProduct * valueArt));
             }
         };
 
@@ -80,19 +84,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById('deliveryCost').innerHTML = 'UYU ' + deliveryCost.toFixed(2);
         document.getElementById('total').innerHTML = 'UYU ' + (subtotal + deliveryCost);
     });
-    
-    document.getElementById('premiumRadio').addEventListener('change', function(e){
+
+    document.getElementById('premiumRadio').addEventListener('change', function (e) {
         deliveryPercentage = 0.15;
         updateTotal();
-        
+
     });
 
-    document.getElementById('expressRadio').addEventListener('change', function(e){
+    document.getElementById('expressRadio').addEventListener('change', function (e) {
         deliveryPercentage = 0.07;
         updateTotal();
     });
 
-    document.getElementById('standardradio').addEventListener('change', function(e){
+    document.getElementById('standardradio').addEventListener('change', function (e) {
         deliveryPercentage = 0.05;
         updateTotal();
     });
