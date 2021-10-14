@@ -44,14 +44,130 @@
       <a id=user class="py-2 d-none d-md-inline-block">Mi perfil</a>
     </div>
   </nav>
+
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <h4>Productos comprados</h4>
+    <br>
+    <div class="container">
+      <div class="row">
+          <div class="container">
+            <form class="needs-validation" id="sell-info">
+
+            <div class="row">
+              <div class="col-md-6">
+                    <div class="d-block my-3">
+                      <h5 class="mb-3">Tipo de envío</h5>   
+                <div class="custom-control custom-radio">
+                  <input id="premiumRadio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+                  <label class="custom-control-label" for="premiumRadio">Premium 2 a 5 días (15%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="expressRadio" name="publicationType" type="radio" class="custom-control-input" required="">
+                  <label class="custom-control-label" for="expressRadio">Express 5 a 8 días (7%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                  <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
+                </div>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <h5 class="mb-3">Dirección de envío</h5>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <label for="calle"class="form-label">Calle</label>
+                      <input type="text" class="form-control" name="calle" required>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="número"class="form-label">Número</label>
+                      <input type="text" class="form-control" name="número" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="esquina" class="form-label">Esquina</label>
+                  <input type="text" class="form-control" name="esquina" required>
+                </div>
+                <hr>
+                <div class="col-mb-3">
+                  <h5 class="mb-3">Formas de pago</h5>
+                  <div class="row">
+                    <div class="col-md-8 mb-3">
+                    <select class="custom-select d-block w-100" id="payment" required>
+                      <option value="">Seleccione método de pago</option>
+                      <option>Tarjeta de crédito</option>
+                      <option>Tarjeta de débito</option>
+                      <option>Efectivo</option>
+                      <option>Transferencias</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Ingrese un método de pago válido.
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6" style="padding: 10px;box-shadow: 1px 2px 3px rgba(0,0,0,.5);">
+                <ul class="list-group" id="cartProduct">
+                  <div class="list-group-item list-group-item-action" href="product-info.html">
+                    <div class="row">
+                        <div class="col-4">
+                            <img style= "width: 100px" src="`+ src + `">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Item Title</h5> 
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                              <h10 class="text-muted" >1500 U$S</h10>
+                              <input type="number" min="0" style="width: 60px;">
+                              <h10 class="text-muted" >3000 U$S</h10>
+ 
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </ul>
+
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">Subtotal</h6>
+                      </div>
+                      <span class="text-muted" id="subtotalCost"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">Costo de envío</h6>
+                        <small class="text-muted">Según el tipo de envío</small>
+                      </div>
+                      <span class="text-muted" id="deliveryCost">250</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span>Total ($)</span>
+                      <strong id="total">00</strong>
+                    </li>
+                  </ul>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg" style="float: right;"type="submit">Finalizar compra</button>
+              </div>
+            </div>
+            
+          </form>
+          </div>
+          
+          <br> 
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

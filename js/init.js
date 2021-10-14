@@ -18,6 +18,7 @@ var hideSpinner = function(){
 
 var logOut = function(){
   window.sessionStorage.removeItem("session");
+  window.sessionStorage.removeItem("username"); 
   window.location.href = "index.html";
 }
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     console.log(user.lastAccess);
   } else {
     miPerfil.href = "index.html";
-    miPerfil.innerHTML = `<i class="fas fa-sign-in-alt icon-login"></i> `
+    miPerfil.innerHTML = `<i class="fas fa-sign-in-alt icon-login"></i>`
   }
 })
 //Función que se ejecuta una vez que se haya lanzado el evento de
