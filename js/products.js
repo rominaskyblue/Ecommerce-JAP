@@ -28,35 +28,35 @@ function orderProduct(criterion, array) {
     return result;
 }
 
+function clickProduct() {
+    location.href = "product-info.html"
+}
+
 function showProductList(array) {
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
         let product = array[i];
         console.log(product);
-        console.log('iteracion ' + i, 'min ' + minCount + '---- max ' + maxCount);
+        console.log('iteracion ' + i, 'min ' + minCount + 'max ' + maxCount);
         console.log(product);
         if (((minCount === undefined) || (minCount !== undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount === undefined) || (maxCount !== undefined && parseInt(product.cost) <= maxCount))) {
 
-            htmlContentToAppend += `
-        <a class="list-group-item list-group-item-action" href="product-info.html">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+        htmlContentToAppend += 
+       `
+          <div class="col-md-3 col-sm-6" onclick="clickProduct()">
+            <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" style = "width:100%"src="` + product.imgSrc + `" alt="` + product.description + `>
+            <h5 style = "font-size:10vw;">`+ product.name +`</h5>
+              <div class="card-body">
+                <p class="card-text">`+ product.description +`</p>
+                <small class= "text-muted" > USD ` + product.cost + `</small>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">Unidades vendidas: ` + product.soldCount + `</small>
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + `</h4> 
-                        <small class= "text-muted" >` + product.cost + `</small>
-                    </div>
-                    <h10 class="text-muted" >`+ product.description + `</h10>
-                    <div>
-                        <small class= "text-muted"> Unidades vendidas: ` + product.soldCount + `</small>
-                    </div>
-                </div>
+              </div>
             </div>
-        </a>
-        `
+          </div>`
         }
 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
@@ -73,20 +73,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("sortDesc").addEventListener("click", function () {
-        let orderProducts = orderProduct(ORDER_DESC_BY_PRICE,product);
+        let orderProducts = orderProduct(ORDER_DESC_BY_PRICE, product);
         showProductList(orderProducts);
     });
 
     document.getElementById("sortAsc").addEventListener("click", function () {
-        let orderProducts = orderProduct(ORDER_ASC_BY_PRICE,product);
+        let orderProducts = orderProduct(ORDER_ASC_BY_PRICE, product);
         showProductList(orderProducts);
     });
 
     document.getElementById("sortByCount").addEventListener("click", function () {
-        let orderProducts = orderProduct(ORDER_BY_RELEVANCE,product);
+        let orderProducts = orderProduct(ORDER_BY_RELEVANCE, product);
         showProductList(orderProducts);
     });
- 
+
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
