@@ -45,9 +45,9 @@ function showProductList(array) {
         htmlContentToAppend += 
        `
           <div class="col-md-3 col-sm-6" onclick="clickProduct()">
-            <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" style = "width:100%"src="` + product.imgSrc + `" alt="` + product.description + `>
-            <h5 style = "font-size:10vw;">`+ product.name +`</h5>
+            <div class="card mb-4 shadow-sm" >
+            <img class="bd-placeholder-img card-img-top" style = "width:100%"src="` + product.imgSrc + `" alt="` + product.description + `">
+            <p style= "text-align:center">`+ product.name +`</p>
               <div class="card-body">
                 <p class="card-text">`+ product.description +`</p>
                 <small class= "text-muted" > USD ` + product.cost + `</small>
