@@ -15,10 +15,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
     document.getElementById("guardarCambios").addEventListener("click", saveProfile);
-
-
-    //saveProfile();
-
 });
 
 function recuperarValores() {
@@ -44,12 +40,8 @@ function saveProfile() {
         email: email.value,
         teléfono: teléfono.value
     }
+
     let profileuser = JSON.stringify(newUser);
     window.localStorage.setItem("datauser", profileuser);
-    /*window.sessionStorage.setItem("firstname", firstname.value)
-    window.sessionStorage.setItem("secondname", secondname.value)
-    window.sessionStorage.setItem("surname", surname.value)
-    window.sessionStorage.setItem("secondsurname", secondsurname.value)
-    window.sessionStorage.setItem("email", email.value)
-    window.sessionStorage.setItem("teléfono", teléfono.value)*/
+    alert('Datos guardaros correctamente!');
 }
