@@ -36,7 +36,7 @@ function showProductList(array) {
     let htmlContentToAppend = "";
     if (array.length === 0) {
         document.getElementById("prod-list-container").innerHTML = 
-        `<p style="text-align:center;margin:60px;font-size:large"> No hay resultados para esa busqueda</p>`;
+        `<p style="text-align:center;margin:60px;font-size:large"> No hay resultados para esa búsqueda</p>`;
     } else {
         for (let i = 0; i < array.length; i++) {
             let product = array[i];

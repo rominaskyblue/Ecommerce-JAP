@@ -33,7 +33,7 @@ const total = document.getElementById('total');
 /**********************************************| Funciones |***************************************************/
 
 /* Funcion encargada de borrar un producto del arreglo de productos
-@param index: indice que indica la posicion del productoa  eliminar en el arreglo general de productos
+@param index: indice que indica la posicion del producto a eliminar en el arreglo general de productos
 en el carrito*/
 
 function deleteProduct(index) {
